@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "description": "Curated local URL threat-intelligence guidance for grounded ADK decisions.",
+  "chunks": [
+    {
+      "id": "intel-phishing-urgency-001",
+      "title": "Phishing urgency and credential collection",
+      "source": "local security playbook",
+      "keywords": ["phishing", "urgent", "login", "password", "credential", "payment", "verify"],
+      "signals": [
+        "urgent account, payment, or login language increases phishing risk",
+        "credential collection requests should be reviewed with URL and domain evidence"
+      ],
+      "summary": "Messages that pressure the user to log in, verify an account, or make a payment should be treated as suspicious until URL reputation and domain registration evidence agree.",
+      "content": "Phishing often combines urgency with credential or payment language. Phrases such as urgent payment, verify your account, password reset, login now, or suspended account are weak alone but become stronger when the URL model or domain evidence is also suspicious."
+    },
+    {
+      "id": "intel-rdap-age-001",
+      "title": "RDAP domain age and registration context",
+      "source": "local domain intelligence guide",
+      "keywords": ["rdap", "domain age", "registration", "registrar", "nameserver", "new domain"],
+      "signals": [
+        "newly registered domains are higher risk in phishing triage",
+        "missing or unparsable registration dates should be treated as unknowns"
+      ],
+      "summary": "RDAP registration dates, registrar, nameservers, and domain status codes are structured evidence. Young domains are not automatically malicious, but they raise review priority.",
+      "content": "RDAP provides machine-readable registration data such as creation date, expiration date, registrar, nameservers, and status values. Domains registered in the last 7 to 30 days deserve extra caution when paired with suspicious message content or URL model results."
+    },
+    {
+      "id": "intel-safe-browsing-001",
+      "title": "Safe Browsing interpretation",
+      "source": "local reputation guide",
+      "keywords": ["safe browsing", "malware", "social engineering", "unwanted software", "reputation"],
+      "signals": [
+        "a Safe Browsing match is strong threat evidence",
+        "no Safe Browsing match is not proof that a URL is safe"
+      ],
+      "summary": "Safe Browsing matches should strongly influence the verdict, while missing API configuration or empty matches must be represented carefully.",
+      "content": "Google Safe Browsing threat matches are strong evidence for high risk. An empty response only means no match was found in the checked source at lookup time. It must not be presented as proof that the URL is safe."
+    },
+    {
+      "id": "intel-shorteners-001",
+      "title": "URL shorteners and indirection",
+      "source": "local URL analysis guide",
+      "keywords": ["shortener", "redirect", "bit.ly", "tinyurl", "link", "tracking"],
+      "signals": [
+        "shortened or redirect-heavy URLs hide the final destination",
+        "indirection should increase review priority when other evidence is incomplete"
+      ],
+      "summary": "Shorteners and redirect chains reduce visibility. They are common in legitimate campaigns and abuse, so they should raise review priority rather than decide alone.",
+      "content": "URL shorteners, redirectors, and tracking links make the destination harder to inspect. Treat this as contextual evidence. Pair it with domain age, Safe Browsing, and local model output before escalating."
+    },
+    {
+      "id": "intel-brand-impersonation-001",
+      "title": "Brand impersonation domains",
+      "source": "local phishing guide",
+      "keywords": ["brand", "impersonation", "homoglyph", "typosquat", "subdomain", "lookalike"],
+      "signals": [
+        "lookalike domains and confusing subdomains increase phishing risk",
+        "brand terms in unrelated domains require RDAP and reputation checks"
+      ],
+      "summary": "Brand-like tokens, confusing subdomains, and typo patterns can indicate impersonation, especially when combined with urgency or new registration.",
+      "content": "Attackers often use domains or subdomains that resemble trusted brands. Look for typos, added words such as secure or verify, unusual TLDs, and brand names appearing outside the registered domain."
+    }
+  ]
+}
