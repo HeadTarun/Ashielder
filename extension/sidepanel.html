@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AIshield</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="sidepanel.css" />
+  </head>
+  <body>
+    <main id="app-shell">
+
+      <!-- ── Setup screen (no URL configured for iframe mode) ── -->
+      <section id="setup" class="setup" hidden>
+        <div class="setup__card">
+          <div class="setup__mark">TI</div>
+          <h1>Set your app URL</h1>
+          <p>Open extension options and configure a frontend URL or switch to AI Chatbot mode.</p>
+          <button id="open-options" type="button">Open Options</button>
+        </div>
+      </section>
+
+      <!-- ── Iframe mode ── -->
+      <iframe id="app-frame" title="TIBrain web app" allow="clipboard-read; clipboard-write" hidden></iframe>
+
+      <!-- ── Chatbot mode ── -->
+      <div id="chatbot" class="chatbot" hidden>
+
+        <!-- Header -->
+        <header class="chat-header">
+          <div class="chat-header__brand">
+            <div class="chat-header__mark">TI</div>
+            <div class="chat-header__info">
+              <div class="chat-header__title">AIshield</div>
+              <div class="chat-header__sub">Cybersecurity Analyst · ADK</div>
+            </div>
+          </div>
+          <div class="chat-header__right">
+            <div class="chat-header__status">
+              <span class="status-dot" id="conn-dot"></span>
+              <span id="conn-label">Connecting…</span>
+            </div>
+            <button class="icon-btn" id="new-chat-btn" title="New conversation">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+            </button>
+          </div>
+        </header>
+
+        <!-- Messages container -->
+        <div class="chat-messages" id="chat-messages" role="log" aria-live="polite">
+          <!-- Rendered by JS -->
+        </div>
+
+        <!-- Typing indicator -->
+        <div class="typing-row" id="typing" hidden>
+          <div class="typing-bubble">
+            <span></span><span></span><span></span>
+          </div>
+          <span class="typing-label">Analyzing…</span>
+        </div>
+
+        <!-- Input area -->
+        <div class="chat-input-area">
+          <div class="chat-input-wrap">
+            <!-- Scan current page button (left of input) -->
+            <button id="scan-page-btn" class="scan-btn" type="button" title="Scan page content (WhatsApp · Gmail · Twitter)">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 7V5a2 2 0 0 1 2-2h2"/>
+                <path d="M17 3h2a2 2 0 0 1 2 2v2"/>
+                <path d="M21 17v2a2 2 0 0 1-2 2h-2"/>
+                <path d="M7 21H5a2 2 0 0 1-2-2v-2"/>
+                <circle cx="12" cy="12" r="3"/>
+              </svg>
+            </button>
+            <textarea
+              id="chat-input"
+              class="chat-input"
+              placeholder="Paste a URL, message, or ask anything…"
+              rows="1"
+              aria-label="Chat input"
+            ></textarea>
+            <button id="chat-send" class="chat-send" type="button" aria-label="Send message" disabled>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+            </button>
+          </div>
+          <div class="chat-footer">
+            <span id="footer-session">Session: —</span>
+            <span class="footer-sep">·</span>
+            <button class="link-btn" id="open-options-chat">Options</button>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <script src="config.js"></script>
+    <script src="sidepanel.js"></script>
+  </body>
+</html>

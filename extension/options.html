@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TIBrain Extension Options</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main class="options">
+      <section class="options__card">
+
+        <!-- Header -->
+        <div class="options__header">
+          <div class="options__mark">TI</div>
+          <div class="options__header-text">
+            <h1>TIBrain Side Panel</h1>
+            <p class="options__sub">Configure how the extension panel behaves</p>
+          </div>
+        </div>
+
+        <!-- Mode Selection -->
+        <div class="options__section">
+          <label class="options__section-title">Panel Mode</label>
+          <div class="mode-toggle">
+            <label class="mode-option" id="mode-opt-iframe">
+              <input type="radio" name="panel-mode" id="mode-iframe" value="iframe" />
+              <span class="mode-label">
+                <span class="mode-icon">🌐</span>
+                <span class="mode-text">
+                  <strong>Iframe App</strong>
+                  <small>Load your web app in the panel</small>
+                </span>
+                <span class="mode-check">✓</span>
+              </span>
+            </label>
+            <label class="mode-option" id="mode-opt-chatbot">
+              <input type="radio" name="panel-mode" id="mode-chatbot" value="chatbot" />
+              <span class="mode-label">
+                <span class="mode-icon">🤖</span>
+                <span class="mode-text">
+                  <strong>AI Chatbot</strong>
+                  <small>Connect directly to ADK API</small>
+                </span>
+                <span class="mode-check">✓</span>
+              </span>
+            </label>
+          </div>
+        </div>
+
+        <div class="options__divider"></div>
+
+        <!-- Iframe Settings -->
+        <div class="options__section" id="iframe-settings">
+          <label class="options__section-title" for="frontend-url">Frontend URL</label>
+          <p>Enter the Vercel frontend URL to load in the side panel.</p>
+          <input id="frontend-url" type="url" placeholder="https://your-app.vercel.app" />
+          <div class="options__actions">
+            <button id="save" type="button">Save URL</button>
+            <button id="use-local" type="button" class="secondary">Use localhost:5173</button>
+          </div>
+        </div>
+
+        <!-- Chatbot Settings -->
+        <div class="options__section" id="chatbot-settings" hidden>
+          <label class="options__section-title" for="api-url">ADK API Server URL</label>
+          <p>Enter the URL where your <code>main.py</code> API server is running.</p>
+          <input id="api-url" type="url" placeholder="http://localhost:8000" />
+          <div class="options__actions">
+            <button id="save-api" type="button">Save API URL</button>
+            <button id="use-local-api" type="button" class="secondary">Use localhost:8000</button>
+          </div>
+
+          <button id="test-connection" type="button" class="secondary outline">
+            <span id="test-label">⚡ Test Connection</span>
+          </button>
+
+          <div class="api-status" id="api-status-container" hidden>
+            <span class="api-status__dot" id="api-status-dot"></span>
+            <span id="api-status-text">Checking...</span>
+          </div>
+
+          <div class="info-box" id="chatbot-info">
+            <strong>ℹ️ About Chatbot Mode</strong>
+            <ul>
+              <li>Connects directly to your local ADK agent</li>
+              <li>No login required — auto-assigns an extension user</li>
+              <li>Full threat analysis with verdict cards</li>
+              <li>Persistent session across panel open/close</li>
+            </ul>
+          </div>
+        </div>
+
+        <p id="status" class="status" role="status"></p>
+
+      </section>
+    </main>
+    <script src="config.js"></script>
+    <script src="options.js"></script>
+  </body>
+</html>

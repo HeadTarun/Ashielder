@@ -1,0 +1,332 @@
+html,
+body {
+  min-width: 440px;
+  margin: 0;
+  background: #0b0f19;
+  color: #f8fafc;
+  font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.options {
+  padding: 28px;
+}
+
+/* ── Card ──────────────────────────────────────────────── */
+.options__card {
+  max-width: 540px;
+  padding: 28px;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: 18px;
+  background: #111827;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
+}
+
+/* ── Header ─────────────────────────────────────────────── */
+.options__header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.options__mark {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #8b5cf6, #22d3ee);
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+
+.options__header-text h1 {
+  margin: 0 0 2px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.options__sub {
+  margin: 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+/* ── Section ─────────────────────────────────────────────── */
+.options__section {
+  margin-bottom: 6px;
+}
+
+.options__section-title {
+  display: block;
+  margin-bottom: 12px;
+  color: #94a3b8;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.options__divider {
+  height: 1px;
+  background: rgba(148, 163, 184, 0.1);
+  margin: 20px 0;
+}
+
+/* ── Mode Toggle ──────────────────────────────────────────── */
+.mode-toggle {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mode-option {
+  cursor: pointer;
+  display: block;
+}
+
+.mode-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.mode-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1.5px solid rgba(148, 163, 184, 0.16);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  position: relative;
+}
+
+.mode-label:hover {
+  border-color: rgba(139, 92, 246, 0.4);
+  background: rgba(139, 92, 246, 0.06);
+}
+
+.mode-option.selected .mode-label {
+  border-color: #8b5cf6;
+  background: rgba(139, 92, 246, 0.12);
+}
+
+.mode-icon {
+  font-size: 20px;
+  flex-shrink: 0;
+  width: 28px;
+  text-align: center;
+}
+
+.mode-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.mode-text strong {
+  font-size: 14px;
+  font-weight: 600;
+  color: #f1f5f9;
+}
+
+.mode-text small {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.mode-check {
+  color: #8b5cf6;
+  font-weight: 700;
+  font-size: 15px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.mode-option.selected .mode-check {
+  opacity: 1;
+}
+
+/* ── Form elements ───────────────────────────────────────── */
+p {
+  margin: 0 0 14px;
+  color: #94a3b8;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+p code {
+  background: rgba(139, 92, 246, 0.2);
+  color: #c4b5fd;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+}
+
+label.options__section-title {
+  margin-top: 0;
+}
+
+input {
+  width: 100%;
+  height: 44px;
+  padding: 0 14px;
+  box-sizing: border-box;
+  border: 1.5px solid rgba(148, 163, 184, 0.2);
+  border-radius: 10px;
+  background: #020617;
+  color: #f8fafc;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+input:focus {
+  border-color: #8b5cf6;
+}
+
+input::placeholder {
+  color: #334155;
+}
+
+/* ── Actions ─────────────────────────────────────────────── */
+.options__actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 14px;
+  margin-bottom: 12px;
+}
+
+button {
+  min-height: 40px;
+  padding: 0 18px;
+  border: 0;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #8b5cf6, #22d3ee);
+  color: #fff;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: inherit;
+  transition: opacity 0.2s, transform 0.1s;
+}
+
+button:hover {
+  opacity: 0.88;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+button.secondary {
+  background: #1f2937;
+  border: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+button.secondary:hover {
+  background: #273549;
+}
+
+button.outline {
+  background: transparent;
+  border: 1.5px solid rgba(139, 92, 246, 0.5);
+  color: #a78bfa;
+  width: 100%;
+  margin-top: 4px;
+}
+
+button.outline:hover {
+  background: rgba(139, 92, 246, 0.1);
+}
+
+/* ── API Status ──────────────────────────────────────────── */
+.api-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 14px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  font-size: 13px;
+  color: #cbd5e1;
+}
+
+.api-status__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #334155;
+  flex-shrink: 0;
+  transition: background 0.3s;
+}
+
+.api-status__dot.checking {
+  background: #f59e0b;
+  animation: pulse 1s infinite;
+}
+
+.api-status__dot.online {
+  background: #22c55e;
+  box-shadow: 0 0 6px #22c55e;
+}
+
+.api-status__dot.offline {
+  background: #ef4444;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ── Info box ────────────────────────────────────────────── */
+.info-box {
+  margin-top: 18px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  background: rgba(34, 211, 238, 0.06);
+  border: 1px solid rgba(34, 211, 238, 0.18);
+  font-size: 13px;
+  color: #94a3b8;
+  line-height: 1.6;
+}
+
+.info-box strong {
+  display: block;
+  margin-bottom: 8px;
+  color: #22d3ee;
+  font-size: 13px;
+}
+
+.info-box ul {
+  margin: 0;
+  padding-left: 16px;
+}
+
+.info-box li {
+  margin-bottom: 4px;
+}
+
+/* ── Status message ──────────────────────────────────────── */
+.status {
+  min-height: 20px;
+  margin: 16px 0 0;
+  font-size: 13px;
+  font-weight: 500;
+  color: #22d3ee;
+  text-align: center;
+  transition: color 0.2s;
+}

@@ -1,0 +1,43 @@
+{
+  "manifest_version": 3,
+  "name": "AIshield \u2014 Cybersecurity Analyst",
+  "description": "AI-powered cybersecurity chatbot. Analyzes URLs, emails and messages for phishing, malware and social engineering threats.",
+  "version": "1.3.0",
+  "permissions": ["sidePanel", "storage", "activeTab", "scripting", "tabs"],
+  "host_permissions": [
+    "https://*.vercel.app/*",
+    "http://localhost:*/*",
+    "http://127.0.0.1:*/*",
+    "https://web.whatsapp.com/*",
+    "https://mail.google.com/*",
+    "https://twitter.com/*",
+    "https://x.com/*"
+  ],
+  "action": {
+    "default_title": "Open AIshield"
+  },
+  "background": {
+    "service_worker": "service_worker.js"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "options_page": "options.html",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://web.whatsapp.com/*",
+        "https://mail.google.com/*",
+        "https://twitter.com/*",
+        "https://x.com/*",
+        "http://localhost:*/*",
+        "https://*/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; connect-src http://localhost:* http://127.0.0.1:* https://*.vercel.app; frame-src https://*.vercel.app http://localhost:* http://127.0.0.1:*;"
+  }
+}
